@@ -1,6 +1,13 @@
 import { colors } from '@/constants/colors';
 import { unwornItems } from '@/mocks/closet-analysis';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { AnalyticsCard } from './analytics-card';
 
 export function UnwornItemsCard() {
@@ -32,7 +39,11 @@ export function UnwornItemsCard() {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <View style={styles.imagePlaceholder} />
+            <Image
+              source={item.image}
+              resizeMode="cover"
+              style={styles.itemImage}
+            />
             <Text numberOfLines={1} style={styles.itemName}>
               {item.name}
             </Text>
@@ -67,11 +78,10 @@ const styles = StyleSheet.create({
   list: { paddingTop: 24, paddingRight: 8 },
   separator: { width: 14 },
   item: { width: 128 },
-  imagePlaceholder: {
+  itemImage: {
     width: 128,
     height: 166,
     borderRadius: 16,
-    backgroundColor: colors.analysisTrack,
   },
   itemName: { marginTop: 9, fontSize: 12, color: colors.textPrimary },
   wearCount: { marginTop: 5, fontSize: 11, color: colors.danger },

@@ -76,7 +76,7 @@ export function AnalysisResultScreen({
                 pressed && styles.pressed,
               ]}
             >
-              <Text style={styles.secondaryButtonText}>편집</Text>
+              <Text style={styles.secondaryButtonText}>삭제</Text>
             </Pressable>
             <Pressable
               accessibilityRole="button"
@@ -87,7 +87,7 @@ export function AnalysisResultScreen({
                 pressed && styles.pressed,
               ]}
             >
-              <Text style={styles.primaryButtonText}>옷장에 추가</Text>
+              <Text style={styles.primaryButtonText}>패션카드 만들기</Text>
             </Pressable>
           </View>
         </ScrollView>

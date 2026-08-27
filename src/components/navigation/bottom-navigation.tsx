@@ -51,7 +51,9 @@ export const navItems: NavItem[] = [
   },
 ];
 
-export function BottomNavigation() {
+type BottomNavigationProps = { activeKey?: NavItem['key'] };
+
+export function BottomNavigation({ activeKey }: BottomNavigationProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -63,7 +65,9 @@ export function BottomNavigation() {
         contentContainerStyle={styles.items}
       >
         {navItems.map((item) => {
-          const active = pathname === item.route;
+          const active = activeKey
+            ? activeKey === item.key
+            : pathname === item.route;
 
           return (
             <Pressable

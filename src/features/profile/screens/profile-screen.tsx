@@ -4,6 +4,7 @@ import { BottomNavigation } from '@/components/navigation/bottom-navigation';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
 import { ProfileMenuItem } from '@/features/profile/components/profile-menu-item';
+import { useRouter } from 'expo-router';
 import type { ImageSourcePropType } from 'react-native';
 import {
   Image,
@@ -25,12 +26,10 @@ const profile: {
 };
 
 export function ProfileScreen() {
-  const handleMenuPress = () => {
-    console.log('Menu pressed');
-  };
+  const router = useRouter();
 
   const handleViewPlans = () => {
-    console.log('View plans pressed');
+    router.push('/subscription');
   };
 
   const handleLogout = () => {
@@ -90,10 +89,7 @@ export function ProfileScreen() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        <AppHeader
-          avatarSource={profile.imageSource}
-          onMenuPress={handleMenuPress}
-        />
+        <AppHeader avatarSource={profile.imageSource} />
 
         <View style={styles.profileSection}>
           <View style={styles.profileImage}>

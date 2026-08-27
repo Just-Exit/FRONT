@@ -85,14 +85,14 @@ export function StyleTags({ initialTags }: { initialTags: string[] }) {
             <Text style={styles.tagText}>{tag}</Text>
           </View>
         ))}
-        <Pressable
+        {/* <Pressable
           accessibilityLabel="스타일 태그 추가"
           accessibilityRole="button"
           onPress={() => setIsAdding(true)}
           style={({ pressed }) => [styles.addTag, pressed && styles.pressed]}
         >
           <Text style={styles.addTagText}>+</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
       {isAdding && (
         <View style={styles.inputRow}>

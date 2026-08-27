@@ -6,6 +6,7 @@
     "expo": "~57.0.10",
     "expo-constants": "~57.0.9",
     "expo-dev-client": "~57.0.10",
+    "expo-image-picker": "~57.0.13",
     "expo-linking": "~57.0.5",
     "expo-router": "~57.0.10",
     "expo-status-bar": "~57.0.1",

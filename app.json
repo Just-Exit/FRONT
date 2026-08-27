@@ -2,11 +2,9 @@
   "expo": {
     "name": "Local Demo",
     "slug": "local-demo",
+    "scheme": "localdemo",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
@@ -17,7 +15,15 @@
       "package": "com.choihajin.localdemo"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "옷장에 등록할 사진을 선택할 수 있도록 사진 접근을 허용해 주세요.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

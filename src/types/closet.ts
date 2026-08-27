@@ -2,6 +2,22 @@ import type { ImageSourcePropType } from 'react-native';
 
 export type RecentItemStatus = 'queued' | 'processing' | 'complete' | 'failed';
 
+export type ClosetCategory = 'top' | 'bottom' | 'outer' | 'shoes' | 'accessory';
+
+export type ClosetItem = {
+  id: string;
+  name: string;
+  category: ClosetCategory;
+  image: ImageSourcePropType;
+  aspectRatio: number;
+};
+
+export type ClosetItemsPage = {
+  items: ClosetItem[];
+  page: number;
+  hasNextPage: boolean;
+};
+
 export type RecentClosetItem = {
   id: string;
   image: ImageSourcePropType;

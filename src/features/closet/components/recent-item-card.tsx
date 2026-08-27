@@ -34,8 +34,7 @@ export function RecentItemCard({ item, onPress }: RecentItemCardProps) {
 
   return (
     <Pressable
-      accessibilityRole={item.status === 'complete' ? 'button' : undefined}
-      disabled={item.status !== 'complete'}
+      accessibilityRole="button"
       onPress={() => onPress?.(item)}
       style={({ pressed }) => pressed && styles.pressed}
     >

@@ -1,28 +1,39 @@
 import { colors } from '@/constants/colors';
+import { useSideMenu } from '@/components/navigation/side-menu-context';
 import type { ImageSourcePropType } from 'react-native';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type AppHeaderProps = {
   avatarSource?: ImageSourcePropType;
   avatarPlaceholderText?: string;
+  leading?: 'menu' | 'back';
   onMenuPress?: () => void;
+  onBackPress?: () => void;
 };
 
 export function AppHeader({
   avatarSource,
   avatarPlaceholderText = 'A',
+  leading = 'menu',
   onMenuPress,
+  onBackPress,
 }: AppHeaderProps) {
+  const { openSideMenu } = useSideMenu();
+
   return (
     <View style={styles.header}>
       <Pressable
-        accessibilityLabel="메뉴 열기"
+        accessibilityLabel={leading === 'back' ? '뒤로 가기' : '메뉴 열기'}
         accessibilityRole="button"
         hitSlop={8}
-        onPress={onMenuPress}
+        onPress={
+          leading === 'back' ? onBackPress : (onMenuPress ?? openSideMenu)
+        }
         style={({ pressed }) => [styles.menuButton, pressed && styles.pressed]}
       >
-        <Text style={styles.menu}>☰</Text>
+        <Text style={leading === 'back' ? styles.back : styles.menu}>
+          {leading === 'back' ? '‹' : '☰'}
+        </Text>
       </Pressable>
       <Text style={styles.brand}>Pikit</Text>
       <View style={styles.avatar}>
@@ -48,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   menu: { fontSize: 22, color: colors.textPrimary },
+  back: { fontSize: 36, lineHeight: 38, color: colors.textPrimary },
   pressed: { opacity: 0.55 },
   brand: { fontSize: 20, fontWeight: '600', color: colors.textPrimary },
   avatar: {
